@@ -9,6 +9,15 @@ Highlighting can be switched on/off globally and for individual buffers. The
 plugin comes with exceptions for certain filetypes, where certain lines can /
 must include trailing whitespace; additional patterns can be configured.
 
+SEE ALSO
+Many plugins also come with a command to strip off the trailing whitespace;
+this plugin separates this into the companion DeleteTrailingWhitespace.vim
+plugin (vimscript #3967), which can even remove the trailing whitespace
+automatically on each write.
+
+To quickly locate the occurrences of trailing whitespace, you can use the
+companion JumpToTrailingWhitespace.vim plugin (vimscript #3968).
+
 RELATED WORKS
 There are already a number of plugins for this purpose, most based on this
 VimTip:
@@ -22,14 +31,6 @@ However, most of them use the older :match command and are not as flexible.
 - Trailer Trash (vimscript #3938) uses :match.
 - DynamicSigns (vimscript #3965) can show whitespace errors (also mixed
   indent) in the sign column.
-
-Many plugins also come with a command to strip off the trailing whitespace;
-this plugin separates this into the companion DeleteTrailingWhitespace.vim
-plugin (vimscript #3967), which can even remove the trailing whitespace
-automatically on each write.
-
-To quickly locate the occurrences of trailing whitespace, you can use the
-companion JumpToTrailingWhitespace.vim plugin (vimscript #3968).
 
 USAGE
 By default, trailing whitespace is highlighted in all Vim buffers. Some users

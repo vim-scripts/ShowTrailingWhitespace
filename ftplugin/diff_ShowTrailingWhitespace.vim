@@ -12,6 +12,6 @@
 "   1.00.001	02-Mar-2012	file creation
 
 " A single space at the beginning of a line can represent an empty context line.
-call ShowTrailingWhitespace#SetLocalExtraPattern( '^\%( \@!\s\)$\|\%>1v')
+call ShowTrailingWhitespace#SetLocalExtraPattern('^\%( \@!\s\)$\|\%>1v')
 
 " vim: set ts=8 sts=4 sw=4 noexpandtab ff=unix fdm=syntax :

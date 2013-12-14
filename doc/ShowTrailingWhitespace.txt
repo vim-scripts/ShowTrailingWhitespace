@@ -23,6 +23,16 @@ Highlighting can be switched on/off globally and for individual buffers. The
 plugin comes with exceptions for certain filetypes, where certain lines can /
 must include trailing whitespace; additional patterns can be configured.
 
+SEE ALSO								     *
+
+Many plugins also come with a command to strip off the trailing whitespace;
+this plugin separates this into the companion |DeleteTrailingWhitespace.vim|
+plugin (vimscript #3967), which can even remove the trailing whitespace
+automatically on each write.
+
+To quickly locate the occurrences of trailing whitespace, you can use the
+companion |JumpToTrailingWhitespace.vim| plugin (vimscript #3968).
+
 RELATED WORKS								     *
 
 There are already a number of plugins for this purpose, most based on this
@@ -37,14 +47,6 @@ However, most of them use the older :match command and are not as flexible.
 - Trailer Trash (vimscript #3938) uses :match.
 - DynamicSigns (vimscript #3965) can show whitespace errors (also mixed
   indent) in the sign column.
-
-Many plugins also come with a command to strip off the trailing whitespace;
-this plugin separates this into the companion |DeleteTrailingWhitespace.vim|
-plugin (vimscript #0000), which can even remove the trailing whitespace
-automatically on each write.
-
-To quickly locate the occurrences of trailing whitespace, you can use the
-companion |JumpToTrailingWhitespace.vim| plugin (vimscript #0000).
 
 ==============================================================================
 USAGE						*ShowTrailingWhitespace-usage*
@@ -61,10 +63,10 @@ below.
 INSTALLATION				 *ShowTrailingWhitespace-installation*
 
 This script is packaged as a |vimball|. If you have the "gunzip" decompressor
-in your PATH, simply edit the *.vba.gz package in Vim; otherwise, decompress
+in your PATH, simply edit the *.vmb.gz package in Vim; otherwise, decompress
 the archive first, e.g. using WinZip. Inside Vim, install by sourcing the
 vimball or via the |:UseVimball| command. >
-    vim ShowTrailingWhitespace.vba.gz
+    vim ShowTrailingWhitespace*.vmb.gz
     :so %
 To uninstall, use the |:RmVimball| command.
 
@@ -79,7 +81,7 @@ For a permanent configuration, put the following commands into your |vimrc|:
 
 					       *ShowTrailingWhitespace-colors*
 To change the highlighting colors: >
-    highlight ShowTrailingWhitespace Error ctermbg=Red guibg=Red
+    highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 <
 						    *g:ShowTrailingWhitespace*
 By default, highlighting is enabled for all buffers, and you can (selectively)
@@ -147,6 +149,10 @@ IDEAS						*ShowTrailingWhitespace-ideas*
 ==============================================================================
 HISTORY					      *ShowTrailingWhitespace-history*
 
+1.01	14-Dec-2013
+- Minor: Also exclude quickfix and help buffers from detection.
+- Add whitespace exception for the "dosbatch" filetype.
+
 1.00	16-Mar-2012
 First published version.
 
@@ -154,8 +160,8 @@ First published version.
 Started development.
 
 ==============================================================================
-Copyright: (C) 2012 Ingo Karkat
-The VIM LICENSE applies to this script; see |copyright|.
+Copyright: (C) 2012-2013 Ingo Karkat
+The VIM LICENSE applies to this plugin; see |copyright|.
 
 Maintainer:	Ingo Karkat <ingo@karkat.de>
 ==============================================================================
