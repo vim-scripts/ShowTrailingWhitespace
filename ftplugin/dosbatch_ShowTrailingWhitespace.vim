@@ -1,7 +1,7 @@
 " dosbatch_ShowTrailingWhitespace.vim: Whitespace exceptions for the "dosbatch" filetype.
 "
 " DEPENDENCIES:
-"   - ShowTrailingWhitespace.vim autoload script.
+"   - ShowTrailingWhitespace.vim autoload script
 "
 " Copyright: (C) 2013 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.

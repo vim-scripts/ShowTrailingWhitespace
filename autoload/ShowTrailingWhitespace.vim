@@ -2,12 +2,18 @@
 "
 " DEPENDENCIES:
 "
-" Copyright: (C) 2012 Ingo Karkat
+" Copyright: (C) 2012-2015 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS
+"   1.02.006	30-Jan-2015	ENH: Keep previous (last accessed) window on
+"				:windo.
+"   1.02.005	22-Jul-2014	Make ShowTrailingWhitespace#IsSet() also handle
+"				Vim 7.0/1 where the g:ShowTrailingWhitespace
+"				variable is not set. Return 0 instead of causing
+"				a function abort.
 "   1.00.004	06-Mar-2012	Toggle to value 2 when enabled but the buffer is
 "				filtered from showing trailing whitespace.
 "	003	05-Mar-2012	Introduce g:ShowTrailingWhitespace_FilterFunc to
@@ -46,20 +52,20 @@ function! s:DeleteMatch()
 endfunction
 
 function! s:DetectAll()
-    let l:currentWinNr = winnr()
-
     " By entering a window, its height is potentially increased from 0 to 1 (the
     " minimum for the current window). To avoid any modification, save the window
     " sizes and restore them after visiting all windows.
     let l:originalWindowLayout = winrestcmd()
-
-    noautocmd windo call ShowTrailingWhitespace#Detect(0)
-    execute l:currentWinNr . 'wincmd w'
+	let l:originalWinNr = winnr()
+	let l:previousWinNr = winnr('#') ? winnr('#') : 1
+	    noautocmd windo call ShowTrailingWhitespace#Detect(0)
+	noautocmd execute l:previousWinNr . 'wincmd w'
+	noautocmd execute l:originalWinNr . 'wincmd w'
     silent! execute l:originalWindowLayout
 endfunction
 
 function! ShowTrailingWhitespace#IsSet()
-    return (exists('b:ShowTrailingWhitespace') ? b:ShowTrailingWhitespace : g:ShowTrailingWhitespace)
+    return (exists('b:ShowTrailingWhitespace') ? b:ShowTrailingWhitespace : get(g:, 'ShowTrailingWhitespace', 0))
 endfunction
 function! ShowTrailingWhitespace#NotFiltered()
     let l:Filter = (exists('b:ShowTrailingWhitespace_FilterFunc') ? b:ShowTrailingWhitespace_FilterFunc : g:ShowTrailingWhitespace_FilterFunc)
