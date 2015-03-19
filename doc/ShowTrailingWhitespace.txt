@@ -153,6 +153,10 @@ IDEAS						*ShowTrailingWhitespace-ideas*
 ==============================================================================
 HISTORY					      *ShowTrailingWhitespace-history*
 
+1.03	19-Mar-2015
+- Exempt the "unite" filetype used by the Unite plugin (vimscript #3396).
+  Thanks to Fernando "Firef0x" G.P. da Silva for the patch.
+
 1.02	08-Mar-2015
 - Add whitespace exception for the "markdown" filetype.
 - Make ShowTrailingWhitespace#IsSet() also handle Vim 7.0/1 where the
